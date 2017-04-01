@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="jumbo">
+    <h3>
+    {% if "email" not in session %} Please sign in or sign up {% endif %}
+    </h3>
+    <h2>Welcome to Career closet {% if "email" in session %} {{ session["email"].split("@")[0] }} {% endif %}     
+    <h2>
+    <h3>This website will let you take suits for any events<h3>
+    
+  </div>
+{% endblock %}

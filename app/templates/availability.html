@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2> Availability </h2>
+
+	{% if success %}
+	<p>Found these suits for your match</p>
+	
+	<p>Current availability:</p>
+	<p>Small : {{scount}}</p>
+	<p>Medium : {{mcount}}</p>
+	<p>Large : {{lcount}}</p>
+	
+	<p>Corrosponding suits for validation purpose</p>
+	{% for suit in suits %}
+		<p>{{ suit.suit_id }}    {{suit.gender}}    {{suit.size}}     {{suit.type}}</p>
+	{% endfor %}
+	
+<!-- 	<p> {{ suits}} </p> -->
+
+	{% else %}
+
+
+		{% for message in form.gender.errors %}
+		  <div class="flash">{{ message }}</div>
+		{% endfor %}
+		 
+		{% for message in form.type.errors %}
+		  <div class="flash">{{ message }}</div>
+		{% endfor %}
+		 
+		<form action = "{{url_for('availability')}}" method = post>
+		
+		{{form.hidden_tag()}}
+		
+		{{form.gender.label}}
+		{{form.gender}}
+		
+		{{form.type.label}}
+		{{form.type}}
+		
+		
+		{{form.submit}}
+		
+		</form>
+	{% endif %}
+
+{% endblock %}
