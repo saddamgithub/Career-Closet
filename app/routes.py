@@ -110,7 +110,6 @@ def availability():
         elif request.method == "GET":
             return render_template("availability.html", form=form)  
 
-
 @app.route('/echo/', methods=['GET'])
 def echo():
     print("Entered echo")
